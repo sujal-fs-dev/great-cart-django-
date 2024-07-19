@@ -20,20 +20,20 @@ class product(models.Model):
         return reverse('product_detail', args=[self.category.slug,self.slug])
 
     def __self__(self):
+     return self.product_name
 
-        return self.product_name
 VARIATION_CATEGORY_CHOICES=(
         ('color', 'color'),
         ('size', 'size')
     )
 class Variation(models.Model):
-      product             =models.ForeignKey(product, on_delete=models.CASCADE)
+      product            =models.ForeignKey(product, on_delete=models.CASCADE)
       variation_category  =models.CharField(max_length=200, choices= VARIATION_CATEGORY_CHOICES) 
       variation_value     =models.CharField(max_length=100)
       is_active           =models.BooleanField(default=True)
       created_date        =models.DateField(auto_now=True)
       
-      def __str__(self):
+      def __unicode__(self):
           return self.product
       
       

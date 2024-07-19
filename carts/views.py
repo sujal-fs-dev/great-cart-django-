@@ -19,7 +19,7 @@ def _cart_id(request):
 def add_cart(request, product_id):
     color=request.GET['color']
     size=request.GET['size']
-    return HttpResponse(color + '' + size)
+    return HttpResponse(color + '    ' + size)
     exit()
     product_instance = get_object_or_404(product, id=product_id)
     try:

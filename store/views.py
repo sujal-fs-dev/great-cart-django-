@@ -1,4 +1,5 @@
 
+
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 
@@ -60,18 +61,18 @@ def product_detail(request, category_slug, product_slug):
 
 
 def search(request):
-    product_ins = product.objects.none()
-    product_count=0
-     
-
     if 'keyword' in request.GET:
-        keyword = request.GET['keyword']
-        if keyword:
-            product_ins = product.objects.order_by('-created_date').filter(Q(description__icontains=keyword)| Q( product_name__icontains=keyword))
-            product_count=product_ins.count()
-    context = {
-        'product_ins': product_ins,
+        keyword=request.GET['keyword']
+        if 'keyword':
+            products=product.objects.order_by('-created_date').filter(Q(description__icontains=keyword) | Q(product_name__icontains=keyword) )
+            product_count=products.count()
+    context={
+        'products':products,
         'product_count':product_count
     }
-    return render(request, 'store/store.html', context)
+
+    return render(request, 'store/store.html',context)
+
+    
+    
     
