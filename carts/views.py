@@ -54,7 +54,7 @@ def add_cart(request, product_id):
 
         if product_variation in ex_var_list:
            #increase queantity
-           index=existing_var_list.index(product_variation)
+           index=ex_var_list.index(product_variation)
            item_id=id[index]
            item=CartItem.objects.get(product=product_instance, id=item_id)
            item.quantity +=1
@@ -68,7 +68,7 @@ def add_cart(request, product_id):
             for item in product_variation:
                 cart_item.variation.add(item)
         #cart_item.quantity += 1
-        cart_item.save()
+         cart_item.save()
     else :
         cart_item = CartItem.objects.create(
             product=product_instance,
